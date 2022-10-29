@@ -1,0 +1,17 @@
+.deploy_git
+.DS_Store
+node_modules/
+tmp/
+*.log
+.idea/
+yarn.lock
+package-lock.json
+.nyc_output/
+coverage/
+.tmp*
+.vscode
+public/
+#_config.yml
+#_config.fluid.yml
+github-deploy-key
+github-deploy-key.pub

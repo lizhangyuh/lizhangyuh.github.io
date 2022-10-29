@@ -1,0 +1,35 @@
+name: HEXO_DEPLOY
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v1
+        with:
+          ref: main
+      - name: Use Node.js 14.17.0
+        uses: actions/setup-node@v1
+        with:
+          version: 14.17.0
+      - name: Setup hexo
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRI }}
+        run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "lizhangyuh@gmail.com"
+          git config --global user.name "lizhangyuh"
+          npm install hexo-cli -g
+          npm install
+      - name: Hexo deploy
+        run: |
+          hexo clean
+          hexo d
