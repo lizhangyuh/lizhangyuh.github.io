@@ -6,6 +6,7 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "hexo clean && hexo deploy",
+    "prepare": "husky install",
     "server": "hexo generate && hexo server"
   },
   "hexo": {
@@ -23,5 +24,8 @@
     "hexo-renderer-stylus": "^2.1.0",
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^0.0.3"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1"
   }
 }

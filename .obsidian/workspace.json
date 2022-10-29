@@ -1,0 +1,164 @@
+{
+  "main": {
+    "id": "f6dc4fabf9107992",
+    "type": "split",
+    "children": [
+      {
+        "id": "a9e96de24c38033f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "016c5f1a1df4890e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "source/_posts/算法/leetcode/17.电话号码的字母组合.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4d4af25414cbcbee",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d3c99cefcc3ff16",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5ee9219fe4983648",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "aa12cd6cd34d9009",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "da452ff0892afdfa",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "c36fbc1b598cef8b",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b3b9e3a32d05bcdf",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e7fa2f830efa74c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "64a9b6171e33522e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "source/_posts/算法/leetcode/17.电话号码的字母组合.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b8b23be3d8a47a94",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "source/_posts/算法/leetcode/17.电话号码的字母组合.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8e2fc18c77bc339d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "b326e3b0b8081a8b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "source/_posts/算法/leetcode/17.电话号码的字母组合.md"
+              }
+            }
+          },
+          {
+            "id": "ecf98c5a96458c27",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "active": "016c5f1a1df4890e",
+  "lastOpenFiles": [
+    "source/_posts/算法/leetcode/8.字符串转换整数 (atoi).md",
+    "source/_posts/hello-world.md",
+    "source/_posts/跨域问题.md",
+    "README copy.md",
+    "README.md"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "userIgnoreFilters": [
+    "node_modules/",
+    "scaffolds/",
+    "themes/",
+    "public/"
+  ],
+  "showFrontmatter": true,
+  "attachmentFolderPath": "public"
+}

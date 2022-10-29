@@ -15,3 +15,4 @@ public/
 #_config.fluid.yml
 github-deploy-key
 github-deploy-key.pub
+.obsidian/workspace
