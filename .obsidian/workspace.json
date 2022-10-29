@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "source/_posts/算法/leetcode/1584.连接所有点的最小费用.md",
+                "file": "source/_posts/算法/leetcode/152.乘积最大子数组.md",
                 "mode": "source",
                 "source": false
               }
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "source/_posts/算法/leetcode/1584.连接所有点的最小费用.md",
+                "file": "source/_posts/算法/leetcode/152.乘积最大子数组.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "source/_posts/算法/leetcode/1584.连接所有点的最小费用.md",
+                "file": "source/_posts/算法/leetcode/152.乘积最大子数组.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -134,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "source/_posts/算法/leetcode/1584.连接所有点的最小费用.md"
+                "file": "source/_posts/算法/leetcode/152.乘积最大子数组.md"
               }
             }
           },
@@ -155,6 +155,7 @@
   },
   "active": "016c5f1a1df4890e",
   "lastOpenFiles": [
+    "source/_posts/算法/leetcode/1584.连接所有点的最小费用.md",
     "source/_posts/算法/leetcode/1334.阈值距离内邻居最少的城市.md",
     "source/_posts/算法/leetcode/1091.二进制矩阵中的最短路径.md",
     "source/_posts/算法/leetcode/1011.D天内送达包裹的能力.md",
@@ -163,7 +164,6 @@
     "source/_posts/算法/leetcode/721.账户合并.md",
     "source/_posts/算法/leetcode/699. 掉落的方块.md",
     "source/_posts/算法/leetcode/704.二分查找.md",
-    "source/_posts/算法/leetcode/685.冗余链接2.md",
-    "source/_posts/算法/leetcode/684.冗余链接.md"
+    "source/_posts/算法/leetcode/685.冗余链接2.md"
   ]
 }
