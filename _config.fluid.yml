@@ -348,10 +348,10 @@ navbar:
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
     - { key: "home", link: "/" }
-    - { key: "archive", link: "/archives/" }
     - { key: "category", link: "/categories/" }
     - { key: "tag", link: "/tags/" }
-    - { key: "about", link: "/about/" }
+    - { key: "archive", link: "/archives/" }
+    # - { key: "about", link: "/about/" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
