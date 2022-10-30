@@ -1,5 +1,8 @@
 <%
 var parent = page.categories
+
+parent = parent.filter(cat => !cat.parent)
+
 if (Array.isArray(page.category_bar)) {
   parent = parent.filter(cat => page.category_bar.indexOf(cat.name) !== -1)
 }
