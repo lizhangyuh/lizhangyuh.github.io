@@ -17,6 +17,7 @@ Fluid.plugins = {
 
     });
 
+
     if (!textArr[textArr.length - 1] || textArr[textArr.length - 1] == ' ') {
       textArr.pop()
     }
