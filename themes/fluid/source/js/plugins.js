@@ -12,9 +12,14 @@ Fluid.plugins = {
     if (!('Typed' in window)) { return; }
 
     textArr = ['  ']
-    text.split("/").forEach(t => {
-      textArr =  textArr.concat([t + '&nbsp;'])
+    text.split(/；|。|，/).forEach(t => {
+      textArr =  textArr.concat([t])
+
     });
+
+    if (!textArr[textArr.length - 1] || textArr[textArr.length - 1] == ' ') {
+      textArr.pop()
+    }
 
     var typed = new window.Typed('#subtitle', {
       strings: textArr,
