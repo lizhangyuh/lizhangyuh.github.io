@@ -1,0 +1,1220 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=light>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.ico">
+  <link rel="icon" href="/img/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#1d1f24">
+  <meta name="author" content="Jerry Lee">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="leetcode 深度优先搜索">
+<meta property="og:type" content="article">
+<meta property="og:title" content="47.全排列2">
+<meta property="og:url" content="https://blog.jerrylee.me/2021/09/a1637c359464.html">
+<meta property="og:site_name" content="Jerry Lee">
+<meta property="og:description" content="leetcode 深度优先搜索">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-09T15:15:57.676Z">
+<meta property="article:author" content="Jerry Lee">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>47.全排列2 - Jerry Lee</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.jerrylee.me","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":80,"backSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#68c627","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"bf5eb7270c681a87dac4daeeb9dc4139","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+    <!-- Baidu Analytics -->
+    <script async>
+      if (!Fluid.ctx.dnt) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?bf5eb7270c681a87dac4daeeb9dc4139";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 30vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jerry Lee</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                
+                系列
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                
+                归档
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="47.全排列2"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-20 00:00" pubdate>
+          2021年9月20日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          718 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          6 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
+        <span class="list-group-count">(56)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="leetcode"
+        id="heading-c305fb1df5f5fb79acafd8b0fa25b0b8" role="tab" data-toggle="collapse" href="#collapse-c305fb1df5f5fb79acafd8b0fa25b0b8"
+        aria-expanded="true"
+      >
+        leetcode
+        <span class="list-group-count">(56)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-c305fb1df5f5fb79acafd8b0fa25b0b8"
+           role="tabpanel" aria-labelledby="heading-c305fb1df5f5fb79acafd8b0fa25b0b8">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2021/09/1ee5da1fe507.html" title="1011.D天内送达包裹的能力"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">1011.D天内送达包裹的能力</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/ccf6ad58cd8a.html" title="1091.二进制矩阵中的最短路径"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">1091.二进制矩阵中的最短路径</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/8a1aa3ad11a7.html" title="122.买卖股票的最佳时机 II"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">122.买卖股票的最佳时机 II</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/98d75be59f0a.html" title="125. 验证回文串"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">125. 验证回文串</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/6dfb0c949d97.html" title="130.被围绕的区域"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">130.被围绕的区域</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/e094958da4f3.html" title="1334.阈值距离内邻居最少的城市"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">1334.阈值距离内邻居最少的城市</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/b207d139ad46.html" title="136.邻值查找"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">136.邻值查找</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/5c55c968c05f.html" title="152.乘积最大子数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">152.乘积最大子数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/2428552c6da3.html" title="154. 寻找旋转排序数组中的最小值 2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">154. 寻找旋转排序数组中的最小值 2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/fbe38ea3571e.html" title="1584.连接所有点的最小费用"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">1584.连接所有点的最小费用</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/59ae4316663b.html" title="17.电话号码的字母组合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">17.电话号码的字母组合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/c60b74097c6b.html" title="18.四数之和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">18.四数之和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/28c37fe4d19d.html" title="200.岛屿数量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">200.岛屿数量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/9f36be36262a.html" title="208.实现 Trie (前缀树)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">208.实现 Trie (前缀树)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/d00c0b25453f.html" title="210.课程表2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">210.课程表2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/347672d66136.html" title="22.括号生成"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">22.括号生成</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/aa2dbfd75f0d.html" title="23. 合并K个升序链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">23. 合并K个升序链表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/4dd2603238eb.html" title="239.滑动窗口最大值"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">239.滑动窗口最大值</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/c7ddeb838461.html" title="279.完全平方数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">279.完全平方数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/c34f3fd65725.html" title="300.最长递增子序列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">300.最长递增子序列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/91e669f81edd.html" title="322.零钱兑换"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">322.零钱兑换</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/1ff751bbb71e.html" title="327.区间的个数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">327.区间的个数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/5b4cb558d58b.html" title="337.打家劫舍 III"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">337.打家劫舍 III</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/abc5acf8e506.html" title="34.在排序数组中查找元素的第一个和最后一个位置"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">34.在排序数组中查找元素的第一个和最后一个位置</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/45fb9f609987.html" title="394. 字符串解码"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">394. 字符串解码</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/473a1a4615b3.html" title="433.最小基因变化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">433.最小基因变化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/d8e4866d5698.html" title="45. 跳跃游戏 II"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">45. 跳跃游戏 II</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/192faa59c2cf.html" title="450.删除二叉搜索树中的节点"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">450.删除二叉搜索树中的节点</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/a1637c359464.html" title="47.全排列2"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">47.全排列2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/2cc51ba2510e.html" title="50.x的n次幂"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">50.x的n次幂</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/310b63774ff8.html" title="51.N皇后问题"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">51.N皇后问题</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/a24932b4a773.html" title="518.零钱兑换 II"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">518.零钱兑换 II</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/1f1199041b30.html" title="53.最大子序和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">53.最大子序和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/d4aa73c2e1fd.html" title="547.省份数量"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">547.省份数量</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/372a17b6d909.html" title="56.合并区间"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">56.合并区间</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/ee08e0805982.html" title="560. 和为 K 的子数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">560. 和为 K 的子数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/a47563a515f0.html" title="673.最长递增子序列的个数"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">673.最长递增子序列的个数</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/4e32b9173bb0.html" title="684.冗余链接"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">684.冗余链接</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/d38dabc86412.html" title="685.冗余链接2"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">685.冗余链接2</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/c3604616f70c.html" title="699. 掉落的方块"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">699. 掉落的方块</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/06399cba81a2.html" title="704.二分查找"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">704.二分查找</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/6cbf857f7046.html" title="72.编辑距离"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">72.编辑距离</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/13597fc24728.html" title="721.账户合并"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">721.账户合并</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/ef5132bc327a.html" title="743. 网络延迟"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">743. 网络延迟</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/0ad8484ad345.html" title="77.组合"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">77.组合</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/5cd8d3141e83.html" title="78.子集"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">78.子集</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/bfe779944b47.html" title="918.环形子数组的最大和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">918.环形子数组的最大和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/f12d6c038a19.html" title="98.验证二叉搜索树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">98.验证二叉搜索树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/bc68193ce556.html" title="120.三角形最小路径和"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">120.三角形最小路径和</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/cd7daaeb0f4f.html" title="146.LRU缓存"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">146.LRU缓存</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/2c885142f785.html" title="198.打家劫舍"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">198.打家劫舍</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/8cc3eb936545.html" title="297.二叉树的序列化与反序列化"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">297.二叉树的序列化与反序列化</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/09f02e1b9f32.html" title="516.最大回文子序列"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">516.最大回文子序列</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/09/510e100f0b5d.html" title="8.字符串转换整数 (atoi)"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">8.字符串转换整数 (atoi)</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/076d3cc23016.html" title="212.单词搜索 II"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">212.单词搜索 II</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2021/11/85b6a30b99bb.html" title="389.找不同"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">389.找不同</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">47.全排列2</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/permutations-ii/">leetcode</a></p>
+<p>深度优先搜索</p>
+<span id="more"></span>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs Go"><span class="hljs-keyword">var</span> ans [][]<span class="hljs-type">int</span><br><br>  <br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">permuteUnique</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>)</span></span> [][]<span class="hljs-type">int</span> &#123;<br><br>	sort.Ints(nums)<br>	<br>	used := <span class="hljs-built_in">make</span>([]<span class="hljs-type">bool</span>, <span class="hljs-built_in">len</span>(nums))<br>	<br>	arr := []<span class="hljs-type">int</span>&#123;&#125;<br>	<br>	ans = [][]<span class="hljs-type">int</span>&#123;&#125;<br>	<br>	  <br>	<br>	dfs(nums, used, arr)<br>	<br>	<span class="hljs-keyword">return</span> ans<br><br>&#125;<br><br>  <br><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">dfs</span><span class="hljs-params">(nums []<span class="hljs-type">int</span>, used []<span class="hljs-type">bool</span>, arr []<span class="hljs-type">int</span>)</span></span> &#123;<br><br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(arr) == <span class="hljs-built_in">len</span>(nums) &#123;<br>	<br>		ans = <span class="hljs-built_in">append</span>(ans, <span class="hljs-built_in">append</span>([]<span class="hljs-type">int</span>&#123;&#125;, arr...))<br>		<br>		<span class="hljs-keyword">return</span><br>		<br>	&#125;<br>	<br>	  <br>	<br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(nums); i++ &#123;<br>	<br>		<span class="hljs-keyword">if</span> used[i] &#123;<br>		<br>			<span class="hljs-keyword">continue</span><br>		<br>		&#125;<br>		<br>		  <br>		<br>		<span class="hljs-comment">// 上一个元素如果和当前元素相同且没使用过，则跳过当前元素，防止重复</span><br>		<br>		<span class="hljs-keyword">if</span> i &gt; <span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i<span class="hljs-number">-1</span>] &amp;&amp; !used[i<span class="hljs-number">-1</span>] &#123;<br>		<br>			<span class="hljs-keyword">continue</span><br>		<br>		&#125;<br>		<br>		  <br>		<br>		arr = <span class="hljs-built_in">append</span>(arr, nums[i])<br>		<br>		used[i] = <span class="hljs-literal">true</span><br>		<br>		dfs(nums, used, arr)<br>		<br>		used[i] = <span class="hljs-literal">false</span><br>		<br>		arr = arr[:<span class="hljs-built_in">len</span>(arr)<span class="hljs-number">-1</span>]<br>	<br>	&#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%AE%97%E6%B3%95/" class="category-chain-item">算法</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%AE%97%E6%B3%95/leetcode/" class="category-chain-item">leetcode</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>47.全排列2</div>
+      <div>https://blog.jerrylee.me/2021/09/a1637c359464.html</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jerry Lee</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年9月20日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">
+              <span class="hint--top hint--rounded" aria-label="SA - 相同方式共享">
+                <i class="iconfont icon-sa"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/192faa59c2cf.html" title="450.删除二叉搜索树中的节点">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">450.删除二叉搜索树中的节点</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/2cc51ba2510e.html" title="50.x的n次幂">
+                        <span class="hidden-mobile">50.x的n次幂</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      window.runSlogan = () => {
+        
+          typing(text);
+        
+      }
+
+      window.runSlogan()
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
